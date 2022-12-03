@@ -1,0 +1,6 @@
+:3000 {
+    try_files {path} /200.html
+    encode gzip
+    root * /app
+    file_server
+}

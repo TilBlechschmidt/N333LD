@@ -28,6 +28,7 @@
 		"@fontsource/b612-mono": "^4.5.10",
 		"@fontsource/inter": "^4.5.14",
 		"@sveltejs/adapter-node": "^1.0.0-next.102",
+		"@sveltejs/adapter-static": "^1.0.0-next.48",
 		"@sveltejs/svelte-scroller": "^2.0.7",
 		"@turf/bezier-spline": "^6.5.0",
 		"@turf/line-chunk": "^6.5.0",

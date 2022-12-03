@@ -7,11 +7,10 @@ RUN yarn
 RUN yarn build
 
 # ----- Delivery
-FROM node:17-alpine3.12
+FROM caddy
 
 WORKDIR /app
-COPY --from=web /app/dist .
-COPY --from=web /app/package.json .
+COPY --from=web /app/build .
+COPY Caddyfile /etc/caddy/Caddyfile
 
 EXPOSE 3000
-CMD ["node", "index.js"]
