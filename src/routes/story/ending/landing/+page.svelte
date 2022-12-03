@@ -95,7 +95,7 @@
 			</span>
 			<br /><br />
 			<span in:fade={{ duration: 3000, delay: 10500 }}>
-				Many commercial aircraft in the area congratulated Harrison on his <strong
+				Many commercial pilots in the area congratulated Harrison on his <strong
 					>first successful solo flight.</strong
 				>
 			</span>
