@@ -2,7 +2,7 @@
 	import '@fontsource/b612-mono';
 	import '@fontsource/b612';
 	import '@fontsource/inter';
-	import '../app.css';
+	import '../app.postcss';
 </script>
 
 <slot />

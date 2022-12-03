@@ -1,4 +1,4 @@
-static/video
+static/video/old
 .DS_Store
 node_modules
 /build

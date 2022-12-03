@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    height: 100%;
+}
+
+html, body, #svelte, .mapboxgl-map {
+    font-family: 'Inter', sans-serif !important;
+}
+
+.mapboxgl-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    font: inherit !important;
+}
+
+.mapboxgl-ctrl-attrib {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.mapbox-improve-map {
+    display: none;
+}
+
+.card {
+    @apply rounded-xl drop-shadow shadow-xl bg-white;
+}
+
+.b612 {
+    font-family: "B612", sans-serif;
+}
+
+.b612-mono {
+    font-family: "B612 Mono", monospace;
+}
+
+.inter {
+    font-family: "Inter", sans-serif;
+}
+
+.text-shadow {
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.pulse {
+    box-shadow: 0px 0px 1px 1px #0000001a;
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.35);
+    }
+    100% {
+        box-shadow: 0 0 0 40px rgba(255, 255, 255, 0);
+    }
+}
+
+.shake {
+    animation: shaking 0.15s infinite;
+}
+
+@keyframes shaking {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(5px, 5px) rotate(5deg); }
+    50% { transform: translate(0, 0) rotate(0eg); }
+    75% { transform: translate(-5px, 5px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+}
+
+.lds-ripple div {
+    position: absolute;
+    border: 4px solid rgb(59 130 246);
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+    0% {
+        top: 1.5rem;
+        left: 1.5rem;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    4.9% {
+        top: 1.5rem;
+        left: 1.5rem;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    5% {
+        top: 1.5rem;
+        left: 1.5rem;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        width: 3rem;
+        height: 3rem;
+        opacity: 0;
+    }
+}
+
