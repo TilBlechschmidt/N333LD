@@ -4,6 +4,12 @@
 </script>
 
 <div class="absolute top-0 left-0 h-full w-full bg-black -z-10">
+	<div class="absolute top-0 left-0 h-full w-full flex justify-center items-center -z-20">
+		<div class="lds-ripple">
+			<div />
+			<div />
+		</div>
+	</div>
 	<video
 		out:fade
 		class="object-cover w-full h-full"

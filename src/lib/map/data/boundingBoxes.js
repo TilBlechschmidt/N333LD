@@ -24,10 +24,15 @@ export const approachTransform = {
     }
 }
 
-export const finalTransform = {
-    zoom: 11.68666597247861,
-    center: {
-        lat: 26.69510621039838,
-        lng: -80.09455336992175
-    }
-}
+// export const finalTransform = {
+//     zoom: 11.68666597247861,
+//     center: {
+//         lat: 26.69510621039838,
+//         lng: -80.09455336992175
+//     }
+// }
+
+export const finalBoundingBox = [
+    [-80.04710331043071, 26.779861722616246],
+    [-80.27226470273904, 26.60151718563355]
+];

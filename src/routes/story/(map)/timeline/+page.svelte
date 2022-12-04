@@ -15,7 +15,7 @@
 	import {
 		planeMovementTransform,
 		approachTransform,
-		finalTransform
+		finalBoundingBox
 	} from '$lib/map/data/boundingBoxes.js';
 
 	let time;
@@ -32,7 +32,7 @@
 {:else if time < 1652200020747}
 	<Focus transform={approachTransform} />
 {:else}
-	<Focus transform={finalTransform} />
+	<Focus location={finalBoundingBox} />
 {/if}
 
 {#if time > 1652198718053 && time < 1652200020747}
@@ -126,7 +126,7 @@
 		to the tower to assess the situation and guide Harrison.
 
 		<div class="mt-4 text-center font-mono">
-			"Keep coastline to the right,<br />continue flying north"
+			"Keep the coastline to the right,<br />continue flying north"
 		</div>
 	</TimeTapeCard>
 
