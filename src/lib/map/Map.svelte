@@ -9,7 +9,7 @@
 	center={[-78.0127055189574, 26.403938345917567]}
 	zoom={7.4}
 	options={{
-		customAttribution: ['Til Blechschmidt', 'FlightRadar24', 'FAA']
+		customAttribution: ['Til Blechschmidt', 'FlightRadar24', 'FAA'],
 		interactive: false,
 		keyboard: false
 	}}
