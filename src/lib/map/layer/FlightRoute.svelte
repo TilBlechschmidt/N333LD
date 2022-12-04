@@ -10,7 +10,7 @@
 
 	export let maxSpeed = 15;
 	export let initialSpeed = 100;
-	export let speedup = 0.5;
+	export let speedup = 0.35;
 	export let showTime = false;
 
 	export let time = start;
