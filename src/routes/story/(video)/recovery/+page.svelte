@@ -33,7 +33,7 @@
 <div class="absolute top-0 left-0 h-full w-full bg-black -z-10">
 	<video
 		class="w-full h-full"
-		src="/video/recovery.webm"
+		src="/video/recovery.mp4"
 		bind:currentTime={time}
 		bind:paused
 		bind:this={video}

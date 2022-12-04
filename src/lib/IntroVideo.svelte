@@ -7,7 +7,7 @@
 	<video
 		out:fade
 		class="object-cover w-full h-full"
-		src="/video/intro.webm"
+		src="/video/intro.mp4"
 		autoplay
 		loop
 		muted

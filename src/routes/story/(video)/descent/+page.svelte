@@ -65,7 +65,7 @@
 	<audio src="/audio/sos.mp3" type="audio/mpeg" bind:this={sos} loop volume="0.25" />
 	<video
 		class="w-full h-full"
-		src="/video/descent.webm"
+		src="/video/descent.mp4"
 		bind:paused
 		bind:currentTime={time}
 		bind:this={video}

@@ -48,7 +48,7 @@
 				muted
 				loop
 				class="absolute top-0 left-0 w-full h-full object-cover bg-white"
-				src="/video/credit-bg.webm"
+				src="/video/credit-bg.mp4"
 			/>
 			<div class="mix-blend-darken text-white bg-black text-center inter">
 				<h2 class="text-6xl">The flight of</h2>
@@ -100,7 +100,7 @@
 				alt="Harrison and Morgan in front of the tower"
 			/>
 			<div class="text-gray-500 text-base mt-2 max-w-xs text-center m-auto">
-				Morgan & Harrison in front of the Fort Pierce tower
+				Morgan & Harrison in front of the Palm Beach tower
 			</div>
 		</div>
 
