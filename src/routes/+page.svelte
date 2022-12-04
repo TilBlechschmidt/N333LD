@@ -2,6 +2,7 @@
 	import IntroVideo from '$lib/IntroVideo.svelte';
 	import MdArrowForward from 'svelte-icons/md/MdArrowForward.svelte';
 	import { fade } from 'svelte/transition';
+	import { goto } from '$app/navigation';
 
 	let time = 0;
 
@@ -24,6 +25,7 @@
 	<h1 class="text-8xl">N333LD</h1>
 	<button
 		class="mt-8 p-3 border rounded shadow-2xl drop-shadow-2xl text-shadow bg-gray-600 hover:bg-black transition-all"
+		on:click={() => goto('/story/bahamas')}
 	>
 		<a href="/story/bahamas">
 			Get started

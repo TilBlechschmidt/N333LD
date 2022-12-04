@@ -21,7 +21,7 @@
 	$: showSkip = time > 15 && time < 80;
 	$: showNarrative = time > 153 && !hideNarrative;
 	$: if (showNarrative) scheduleCredits();
-	$: if (time > 116) startSoundtrack();
+	$: if (time > 116.25) startSoundtrack();
 
 	function scheduleCredits() {
 		if (!creditsTimeout) creditsTimeout = setTimeout(goToCredits, 18800);

@@ -10,8 +10,8 @@
 	zoom={7.4}
 	options={{
 		customAttribution: ['Til Blechschmidt', 'FlightRadar24', 'FAA']
-		// interactive: false,
-		// keyboard: false
+		interactive: false,
+		keyboard: false
 	}}
 >
 	<slot />
