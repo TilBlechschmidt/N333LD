@@ -1,12 +1,15 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
 	import CreditGroup from './CreditGroup.svelte';
 	import CreditRow from './CreditRow.svelte';
+	import IconButton from '$lib/IconButton.svelte';
+	import MdArrowForward from 'svelte-icons/md/MdArrowForward.svelte';
+	import { goto } from '$app/navigation';
 
 	const initialSpeed = 60;
 	const targetSpeed = 20;
 
+	let backdrop;
 	let container;
 	let scrollTimeout;
 	let time = 0;
@@ -29,7 +32,8 @@
 		time = 0;
 		scrollTimeout = setTimeout(() => {
 			scrollTimeout = setTimeout(scroll, initialSpeed);
-		}, 2500);
+			backdrop.play();
+		}, 2300);
 	});
 
 	onDestroy(() => {
@@ -44,7 +48,7 @@
 	<div class="w-full h-screen flex flex-col items-center justify-center">
 		<div class="relative overflow-hidden">
 			<video
-				autoplay
+				bind:this={backdrop}
 				muted
 				loop
 				class="absolute top-0 left-0 w-full h-full object-cover bg-white"
@@ -92,7 +96,7 @@
 		/>
 	</CreditGroup>
 
-	<div class="w-full h-screen flex items-center justify-evenly">
+	<div class="w-full h-screen flex items-center justify-evenly relative">
 		<div class="h-1/2">
 			<img
 				src="/crew-1.jpeg"
@@ -113,6 +117,12 @@
 			<div class="text-gray-500 text-base mt-2 max-w-xs text-center m-auto">
 				Morgan showing Harrison the Cessna 208B panel printouts
 			</div>
+		</div>
+		<div class="absolute bottom-32 left-0 w-full flex justify-center">
+			<IconButton on:click={() => goto('/furtherReading')}>
+				Further reading
+				<MdArrowForward slot="icon" />
+			</IconButton>
 		</div>
 	</div>
 </div>

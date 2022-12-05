@@ -8,6 +8,7 @@
 	export let end = Number.MAX_SAFE_INTEGER;
 
 	export let latest;
+	export let hideMarker = false;
 
 	function buildGeojson(start, end) {
 		const startIndex = data.findIndex((e) => e.time >= start);
@@ -42,7 +43,7 @@
 
 <Line name="aircraft" {geojson} color="#0ea5e9" />
 
-{#if latest}
+{#if latest && !hideMarker}
 	<Marker lat={latest.lat} lng={latest.lng}>
 		<div class="relative inline-block">
 			<div
