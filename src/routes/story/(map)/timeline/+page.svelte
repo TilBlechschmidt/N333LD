@@ -45,9 +45,7 @@
 	/>
 {/if}
 
-{#if time > 1652198986144 && time < 1652199229988}
-	<Adiz />
-{/if}
+<Adiz hidden={!(time > 1652198986144 && time < 1652199229988)} />
 
 {#if time > 1652199312087 && time < 1652200020747}
 	<AirportMarker
