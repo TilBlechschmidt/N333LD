@@ -39,10 +39,8 @@
 			fadeOut(soundWaves);
 			fadeOut(soundBoat);
 			soundCar.play();
-			setTimeout(() => {
-				soundPlane.volume = 0.5;
-				soundPlane.play();
-			}, 20000);
+			soundPlane.volume = 0.5;
+			soundPlane.play();
 		} else if (step == 4) {
 			fadeOut(soundPlane);
 			soundTakeoff.play();
@@ -50,10 +48,12 @@
 	}
 
 	function fadeOut(media) {
+		let volume = media.volume;
 		const interval = setInterval(() => {
-			media.volume -= 0.01;
+			volume -= 0.01;
+			media.volume = volume;
 
-			if (media.volume <= 0.01) {
+			if (volume <= 0.01) {
 				media.pause();
 				clearInterval(interval);
 			}
@@ -90,7 +90,7 @@
 {/if}
 
 {#if step == 2}
-	<AnimatedLine name="boat-1" geojson={routeBoat} color="#22c55e" delay={2000} stepSize={0.0005} />
+	<AnimatedLine name="boat-1" geojson={routeBoat} color="#22c55e" stepSize={0.0005} />
 {:else if step == 3}
 	<Line name="boat-2" geojson={routeBoat} color="#22c55e" />
 	<AnimatedLine name="car-2" geojson={routeCar} color="#f97316" fadeOut stepSize={0.0005} />
