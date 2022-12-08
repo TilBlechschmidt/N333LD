@@ -17,6 +17,12 @@
 
 	const position = [-77.04022809341052, 26.52391763050926];
 
+	let soundWaves;
+	let soundBoat;
+	let soundCar;
+	let soundPlane;
+	let soundTakeoff;
+
 	// Step 0: "You are on a vacation (overview map)"
 	// Step 1: "You are on a boat in the Bahamas (satmap + closeup)"
 	// Step 2: "You are driving the boat"
@@ -26,12 +32,44 @@
 
 	function next() {
 		step += 1;
+
+		if (step == 1) soundWaves.play();
+		else if (step == 2) soundBoat.play();
+		else if (step == 3) {
+			fadeOut(soundWaves);
+			fadeOut(soundBoat);
+			soundCar.play();
+			setTimeout(() => {
+				soundPlane.volume = 0.5;
+				soundPlane.play();
+			}, 20000);
+		} else if (step == 4) {
+			fadeOut(soundPlane);
+			soundTakeoff.play();
+		}
+	}
+
+	function fadeOut(media) {
+		const interval = setInterval(() => {
+			media.volume -= 0.01;
+
+			if (media.volume <= 0.01) {
+				media.pause();
+				clearInterval(interval);
+			}
+		}, 10);
 	}
 
 	function startVideo() {
 		goto('/story/descent');
 	}
 </script>
+
+<audio src="/audio/waves.mp3" type="audio/mpeg" bind:this={soundWaves} />
+<audio src="/audio/boat.mp3" type="audio/mpeg" bind:this={soundBoat} />
+<audio src="/audio/car.mp3" type="audio/mpeg" bind:this={soundCar} />
+<audio src="/audio/turboprop.mp3" type="audio/mpeg" bind:this={soundPlane} />
+<audio src="/audio/takeoff.mp3" type="audio/mpeg" bind:this={soundTakeoff} />
 
 {#if step < 2}
 	<SatelliteImagery />
@@ -52,10 +90,10 @@
 {/if}
 
 {#if step == 2}
-	<AnimatedLine name="boat-1" geojson={routeBoat} color="#22c55e" delay={1000} />
+	<AnimatedLine name="boat-1" geojson={routeBoat} color="#22c55e" delay={2000} stepSize={0.0005} />
 {:else if step == 3}
 	<Line name="boat-2" geojson={routeBoat} color="#22c55e" />
-	<AnimatedLine name="car-2" geojson={routeCar} color="#f97316" fadeOut />
+	<AnimatedLine name="car-2" geojson={routeCar} color="#f97316" fadeOut stepSize={0.0005} />
 {:else if step == 4}
 	<Line name="boat-3" geojson={routeBoat} color="#22c55e" />
 	<Line name="car-3" geojson={routeCar} color="#f97316" />
@@ -92,7 +130,7 @@
 {/if}
 
 {#if step == 2}
-	<BahamasCard on:click={next} delay={3500}>
+	<BahamasCard on:click={next} delay={7000}>
 		<span slot="title">Wrapping up 🚕</span>
 		Arriving in port, you hand over the boat to the rental company, pay them with some fish you caught,
 		and then proceed to call an Uber to get to the airport ...
@@ -100,7 +138,7 @@
 {/if}
 
 {#if step == 3}
-	<BahamasCard on:click={next} delay={3000}>
+	<BahamasCard on:click={next} delay={15000}>
 		<span slot="title">The journey home 🛫</span>
 		At the airport, you pass through security and board the aircraft of your friend:
 		<emph class="font-mono">N333LD</emph>

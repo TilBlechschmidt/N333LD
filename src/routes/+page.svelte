@@ -1,5 +1,5 @@
 <script>
-	import IntroVideo from '$lib/IntroVideo.svelte';
+	import Video from '$lib/Video.svelte';
 	import MdArrowForward from 'svelte-icons/md/MdArrowForward.svelte';
 	import { fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
@@ -10,7 +10,7 @@
 	$: windowScene = time > 61 && time < 92;
 </script>
 
-<IntroVideo bind:time />
+<Video bind:time src="/video/intro.mp4" muted loop cover />
 
 <div
 	transition:fade

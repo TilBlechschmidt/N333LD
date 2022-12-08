@@ -2,15 +2,16 @@
 	import { fade } from 'svelte/transition';
 	import IconButton from '$lib/IconButton.svelte';
 	import MdArrowForward from 'svelte-icons/md/MdArrowForward.svelte';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { getContext } from 'svelte';
+	import Video from '$lib/Video.svelte';
 
 	const { startSoundtrack } = getContext('soundtrack');
 
 	let time;
-	let paused;
-	let video;
+	let fadeOut;
+
 	let hideNarrative = false;
 	let creditsTimeout;
 
@@ -28,42 +29,16 @@
 	}
 
 	function goToCredits() {
-		let value = 1.0;
 		hideNarrative = true;
-		const interval = setInterval(() => {
-			value -= 0.01;
-			video.style.opacity = value;
-
-			if (value <= 0) {
-				clearInterval(interval);
-				setTimeout(() => goto('./credits'), 1500);
-			} else {
-				video.volume = value;
-			}
-		}, 10);
+		fadeOut(() => setTimeout(() => goto('./credits'), 1500));
 	}
-
-	onMount(() => {
-		// setTimeout(() => {
-		// 	time = 110;
-		// }, 501);
-	});
 
 	onDestroy(() => {
 		clearTimeout(creditsTimeout);
 	});
 </script>
 
-<div class="absolute top-0 left-0 h-full w-full bg-black -z-10">
-	<video
-		class="w-full h-full"
-		src="/video/landing.mp4"
-		bind:currentTime={time}
-		bind:paused
-		bind:this={video}
-		autoplay
-	/>
-</div>
+<Video src="/video/landing.mp4" bind:time bind:fadeOut />
 
 {#if showSkip}
 	<div class="absolute bottom-8 left-0 w-full flex justify-center" in:fade>
@@ -100,22 +75,5 @@
 				>
 			</span>
 		</div>
-	</div>
-{/if}
-
-{#if paused && !showNarrative && !hideNarrative}
-	<div
-		transition:fade
-		class="absolute top-0 left-0 h-full w-full backdrop-blur bg-black bg-opacity-50 flex flex-col items-center justify-center text-white b612"
-	>
-		<div class="text-3xl mb-8">Please turn up your volume 🔊</div>
-		<button
-			class="p-3 border rounded"
-			on:click={() => {
-				paused = false;
-			}}
-		>
-			I am ready!
-		</button>
 	</div>
 {/if}

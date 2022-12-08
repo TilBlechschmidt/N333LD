@@ -59,16 +59,13 @@
 	$: progress = Math.max(0, Math.min(1, scrollPosition / containerHeight));
 	$: time = start + (end - start) * progress;
 
-	$: heightPerMs.set(containerHeight / (end - start));
+	// For some reason the containerHeight is off by 100px — do not ask me why
+	$: heightPerMs.set((containerHeight - 100) / (end - start));
 	$: tapeMargin.set(windowHeight / 2 + 11);
 	$: tapeStart.set(start);
 
 	setContext('timeTape', { heightPerMs, tapeMargin, tapeStart });
-	onMount(() => {
-		// TODO Remove this
-		// container.scrollTop = 3614;
-		onScroll();
-	});
+	onMount(() => onScroll());
 </script>
 
 <div class="absolute top-0 left-0 h-full w-full flex items-center justify-end pointer-events-none">

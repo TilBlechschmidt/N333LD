@@ -1,20 +1,18 @@
 <script>
-	import { fly, fade } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import ToolButton from '$lib/ToolButton.svelte';
 	import MdVisibility from 'svelte-icons/md/MdVisibility.svelte';
 	import MdFlightTakeoff from 'svelte-icons/md/MdFlightTakeoff.svelte';
 	import MdHeadsetMic from 'svelte-icons/md/MdHeadsetMic.svelte';
 	import MdPerson from 'svelte-icons/md/MdPerson.svelte';
-	import MdRefresh from 'svelte-icons/md/MdRefresh.svelte';
-	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import CrashScreen from '$lib/CrashScreen.svelte';
+	import Video from '$lib/Video.svelte';
 
 	let sos;
-	let video;
-
-	let paused;
+	let fadeOut;
 	let time = 0;
+
 	let crashText = '';
 	let focusedOption = false;
 
@@ -44,16 +42,7 @@
 
 	function changeVideo(option, target) {
 		focusedOption = option;
-		let value = 1.0;
-		const interval = setInterval(() => {
-			video.style.opacity = value;
-			video.volume = value;
-			value -= 0.01;
-			if (value <= 0) {
-				clearInterval(interval);
-				goto(target);
-			}
-		}, 10);
+		fadeOut(() => goto(target));
 	}
 
 	$: if (time > 55) {
@@ -61,35 +50,8 @@
 	}
 </script>
 
-<div class="absolute top-0 left-0 h-full w-full bg-black -z-10">
-	<audio src="/audio/sos.mp3" type="audio/mpeg" bind:this={sos} loop volume="0.25" />
-	<video
-		class="w-full h-full"
-		src="/video/descent.mp4"
-		bind:paused
-		bind:currentTime={time}
-		bind:this={video}
-		autoplay
-	/>
-</div>
-
-{#if paused}
-	<div
-		in:fade={{ delay: 1000, duration: 2000 }}
-		out:fade
-		class="absolute top-0 left-0 h-full w-full  bg-black  flex flex-col items-center justify-center text-white b612"
-	>
-		<div class="text-3xl mb-8">Please turn up your volume 🔊</div>
-		<button
-			class="p-3 border rounded"
-			on:click={() => {
-				paused = false;
-			}}
-		>
-			I am ready!
-		</button>
-	</div>
-{/if}
+<audio src="/audio/sos.mp3" type="audio/mpeg" bind:this={sos} loop volume="0.25" />
+<Video src="/video/descent.mp4" bind:time bind:fadeOut />
 
 {#if showOptions}
 	<div

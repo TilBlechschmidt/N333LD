@@ -1,13 +1,11 @@
 <script>
 	export let title;
 	export let subtitle;
-	export let href = '';
 	export let disabled = false;
 </script>
 
-<a
+<button
 	on:click
-	{href}
 	class="cursor-pointer no-default rounded-xl border border-solid border-gray-300 flex p-4 hover:shadow transition-all hover:bg-gray-50"
 	class:bg-gray-200={disabled}
 	class:pointer-events-none={disabled}
@@ -21,4 +19,4 @@
 			{subtitle}
 		</div>
 	</div>
-</a>
+</button>
