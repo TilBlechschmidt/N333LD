@@ -1,0 +1,15 @@
+{
+  "id": "01GQX1CAPD0H1GYTHVWJJA32XV",
+  "root": "build",
+  "name": "N333LD",
+  "domain": "n333ld.blechschmidt.dev",
+  "compress": [
+    "html",
+    "js",
+    "json",
+    "css",
+    "woff",
+    "woff2"
+  ],
+  "fallback": "/200.html"
+}
